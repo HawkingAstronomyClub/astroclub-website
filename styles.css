@@ -11,51 +11,57 @@
 body {
     background-color: #0a0a1a;
     color: #ffffff;
-    background-image: 
-        radial-gradient(circle at 10% 20%, rgba(41, 98, 255, 0.1) 0%, transparent 20%),
-        radial-gradient(circle at 90% 80%, rgba(198, 51, 255, 0.1) 0%, transparent 20%),
-        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="20" cy="20" r="0.5" fill="white" opacity="0.7"/><circle cx="50" cy="50" r="0.5" fill="white" opacity="0.7"/><circle cx="80" cy="30" r="0.5" fill="white" opacity="0.7"/><circle cx="30" cy="70" r="0.5" fill="white" opacity="0.7"/><circle cx="70" cy="80" r="0.5" fill="white" opacity="0.7"/></svg>');
+    background-image: url('your-custom-background.jpg');
+    background-size: cover;
     background-attachment: fixed;
-    transition: background-image 0.5s ease;
+    background-position: center;
 }
 
-/* Background Options */
-.bg-selector {
+/* Inaugration Overlay */
+.inaugration-overlay {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
     display: flex;
-    gap: 10px;
-    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
 }
 
-.bg-option {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: 2px solid #4fc3f7;
+.inaugration-content {
+    text-align: center;
+    padding: 40px;
+    max-width: 600px;
+}
+
+.countdown {
+    font-size: 5rem;
+    color: #ff0000;
+    margin-bottom: 40px;
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+}
+
+.inaugration-button {
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    padding: 20px 60px;
+    font-size: 2rem;
+    border-radius: 10px;
     cursor: pointer;
-    transition: transform 0.3s;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 3px;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.7);
+    transition: all 0.3s;
 }
 
-.bg-option:hover {
-    transform: scale(1.2);
-}
-
-#bg1 {
-    background: linear-gradient(135deg, #0a0a1a 0%, #1a237e 100%);
-}
-
-#bg2 {
-    background: linear-gradient(135deg, #1a0033 0%, #4a148c 100%);
-}
-
-#bg3 {
-    background: linear-gradient(135deg, #000033 0%, #000066 100%);
-}
-
-#bg4 {
-    background: linear-gradient(135deg, #000022 0%, #220044 100%);
+.inaugration-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 50px rgba(255, 0, 0, 0.9);
 }
 
 /* Scrolling Announcement */
@@ -66,37 +72,12 @@ body {
     overflow: hidden;
     white-space: nowrap;
     position: relative;
-    border-bottom: 1px solid #4a148c;
-    box-shadow: 0 2px 10px rgba(74, 20, 140, 0.5);
-}
-
-.announcement-bar::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 50px;
-    background: linear-gradient(90deg, #0a0a1a 0%, transparent 100%);
-    z-index: 2;
-}
-
-.announcement-bar::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    width: 50px;
-    background: linear-gradient(90deg, transparent 0%, #0a0a1a 100%);
-    z-index: 2;
 }
 
 .announcement-content {
     display: inline-block;
     padding-left: 100%;
     animation: scroll 25s linear infinite;
-    text-shadow: 0 0 5px rgba(79, 195, 247, 0.7);
     font-family: 'Space Mono', monospace;
 }
 
@@ -136,7 +117,6 @@ header {
     height: 80px;
     margin-right: 20px;
     filter: drop-shadow(0 0 5px rgba(79, 195, 247, 0.7));
-    transition: transform 0.3s;
 }
 
 .vtu-logo {
@@ -156,18 +136,6 @@ header {
     margin-bottom: 5px;
     text-shadow: 0 0 10px rgba(79, 195, 247, 0.5);
     letter-spacing: 1px;
-    position: relative;
-    display: inline-block;
-}
-
-.club-name h1::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #4fc3f7, transparent);
 }
 
 .club-name p {
@@ -193,16 +161,12 @@ header {
     margin-left: 10px;
     border-radius: 5px;
     cursor: pointer;
-    transition: all 0.3s;
     font-family: 'Orbitron', sans-serif;
     letter-spacing: 1px;
     border: 1px solid #4fc3f7;
-    box-shadow: 0 0 10px rgba(79, 195, 247, 0.3);
-    position: relative;
-    overflow: hidden;
 }
 
-/* Improved Dropdown Menu */
+/* Dropdown Menu */
 .dropdown-menu {
     display: none;
     position: absolute;
@@ -210,13 +174,10 @@ header {
     top: 100%;
     background: rgba(26, 35, 126, 0.95);
     min-width: 250px;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(10px);
     z-index: 1;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid rgba(79, 195, 247, 0.3);
     overflow: hidden;
-    animation: fadeIn 0.3s ease-out;
 }
 
 .dropdown-menu a {
@@ -225,7 +186,6 @@ header {
     text-decoration: none;
     display: block;
     font-family: 'Space Mono', monospace;
-    transition: all 0.3s;
     border-bottom: 1px solid rgba(79, 195, 247, 0.1);
 }
 
@@ -235,19 +195,9 @@ header {
     text-align: center;
 }
 
-.dropdown-menu a:last-child {
-    border-bottom: none;
-}
-
 .dropdown-menu a:hover {
     background: rgba(79, 195, 247, 0.2);
     color: #4fc3f7;
-    padding-left: 25px;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
 }
 
 .menu-button {
@@ -257,24 +207,13 @@ header {
     font-size: 1.8rem;
     cursor: pointer;
     margin-right: 20px;
-    transition: all 0.3s;
-    position: relative;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    z-index: 101;
 }
 
 .menu-button:hover {
     color: #4fc3f7;
-    transform: rotate(90deg);
-    background-color: rgba(79, 195, 247, 0.1);
 }
 
-/* Main Content - New Layout */
+/* Main Content */
 .main-content {
     padding: 40px 5%;
     min-height: 60vh;
@@ -293,13 +232,25 @@ header {
     color: #4fc3f7;
     font-size: 2.2rem;
     margin-bottom: 30px;
-    text-shadow: 0 0 10px rgba(79, 195, 247, 0.5);
 }
 
 .action-buttons {
     display: flex;
     gap: 25px;
     margin-bottom: 40px;
+}
+
+.action-buttons button {
+    background: linear-gradient(135deg, rgba(26, 35, 126, 0.8) 0%, rgba(74, 20, 140, 0.8) 100%);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    border: 1px solid #4fc3f7;
 }
 
 .apod-section {
@@ -312,7 +263,6 @@ header {
     color: #4fc3f7;
     margin-bottom: 20px;
     font-size: 1.7rem;
-    text-shadow: 0 0 5px rgba(79, 195, 247, 0.5);
 }
 
 .apod-container {
@@ -321,7 +271,6 @@ header {
     border-radius: 15px;
     overflow: hidden;
     border: 1px solid rgba(79, 195, 247, 0.2);
-    box-shadow: 0 0 30px rgba(31, 38, 135, 0.2);
 }
 
 .apod-image-box {
@@ -337,7 +286,6 @@ header {
     max-width: 100%;
     max-height: 400px;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(79, 195, 247, 0.3);
 }
 
@@ -373,8 +321,6 @@ footer {
     background: rgba(10, 10, 26, 0.9);
     padding: 40px 5% 20px;
     border-top: 1px solid #1a237e;
-    position: relative;
-    backdrop-filter: blur(5px);
 }
 
 .footer-content {
@@ -395,8 +341,6 @@ footer {
     color: #4fc3f7;
     margin-bottom: 20px;
     font-size: 1.3rem;
-    position: relative;
-    display: inline-block;
 }
 
 .footer-section p, .footer-section a {
@@ -404,14 +348,12 @@ footer {
     margin-bottom: 12px;
     display: block;
     text-decoration: none;
-    transition: all 0.3s;
     font-family: 'Space Mono', monospace;
     line-height: 1.5;
 }
 
 .footer-section a:hover {
     color: #4fc3f7;
-    padding-left: 5px;
 }
 
 .copyright {
@@ -424,69 +366,21 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Button Styles */
-button {
-    background: linear-gradient(135deg, rgba(26, 35, 126, 0.8) 0%, rgba(74, 20, 140, 0.8) 100%);
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    transition: all 0.3s;
-    font-family: 'Orbitron', sans-serif;
-    letter-spacing: 1px;
-    border: 1px solid #4fc3f7;
-    box-shadow: 0 0 15px rgba(79, 195, 247, 0.3);
-    position: relative;
-    overflow: hidden;
-}
-
-button:hover {
-    background: linear-gradient(135deg, rgba(48, 63, 159, 0.9) 0%, rgba(123, 31, 162, 0.9) 100%);
-    box-shadow: 0 0 25px rgba(79, 195, 247, 0.6);
-    transform: translateY(-3px);
-}
-
 /* Responsive Design */
-@media (max-width: 1024px) {
-    .club-name h1 {
-        font-size: 1.8rem;
-    }
-    
-    .welcome-section h2 {
-        font-size: 1.8rem;
-    }
-    
-    .action-buttons {
-        flex-direction: column;
-        gap: 15px;
-    }
-}
-
 @media (max-width: 768px) {
     header {
         flex-wrap: wrap;
-        justify-content: space-between;
     }
     
     .logo-container {
         position: static;
         transform: none;
-        order: 2;
         width: 100%;
         justify-content: center;
         margin: 15px 0;
     }
     
-    .menu-button {
-        order: 1;
-    }
-    
     .auth-buttons {
-        order: 3;
-        margin-left: 0;
-        margin-top: 15px;
         width: 100%;
         justify-content: flex-end;
     }
@@ -495,53 +389,16 @@ button:hover {
         flex-direction: column;
     }
     
-    .apod-image-box, .apod-info-box {
-        padding: 15px;
-    }
-    
     .dropdown-menu {
-        left: 0;
         width: 100%;
-        border-radius: 0;
-        border-left: none;
-        border-right: none;
     }
-}
-
-@media (max-width: 480px) {
-    .club-name h1 {
+    
+    .countdown {
+        font-size: 3rem;
+    }
+    
+    .inaugration-button {
+        padding: 15px 40px;
         font-size: 1.5rem;
-    }
-    
-    .club-name p {
-        flex-direction: column;
-    }
-    
-    .vtu-logo {
-        margin-right: 0;
-        margin-bottom: 5px;
-    }
-    
-    .welcome-section h2 {
-        font-size: 1.5rem;
-    }
-    
-    .apod-title {
-        font-size: 1.4rem;
-    }
-    
-    .footer-section {
-        min-width: 100%;
-        margin-bottom: 25px;
-    }
-    
-    .bg-selector {
-        bottom: 10px;
-        right: 10px;
-    }
-    
-    .bg-option {
-        width: 25px;
-        height: 25px;
     }
 }
