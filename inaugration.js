@@ -21,8 +21,8 @@ async function checkIP() {
 
 // Countdown timer
 function startCountdown() {
-    let minutes = 5;
-    let seconds = 0;
+    let minutes = 0;
+    let seconds = 30;
     const countdownElement = document.getElementById('countdown');
     
     const timer = setInterval(() => {
