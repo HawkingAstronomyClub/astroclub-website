@@ -74,7 +74,7 @@
             to { transform: scaleX(1); }
         }
         
-        /* Fireworks Styles (Improved from first version) */
+        /* Fireworks Styles */
         .firework {
             position: fixed;
             width: 5px;
@@ -105,6 +105,14 @@
         
         .main-website {
             display: none;
+        }
+        
+        /* Centered action buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
         }
     </style>
     <!-- Your original CSS -->
@@ -159,14 +167,6 @@
                 <button id="signUpBtn"><i class="fas fa-user-plus"></i> Sign Up</button>
             </div>
         </header>
-        
-        <!-- Background Selector -->
-        <div class="bg-selector">
-            <button id="bg1" class="bg-option" data-bg="default"></button>
-            <button id="bg2" class="bg-option" data-bg="nebula"></button>
-            <button id="bg3" class="bg-option" data-bg="stars"></button>
-            <button id="bg4" class="bg-option" data-bg="galaxy"></button>
-        </div>
         
         <!-- Main Content -->
         <div class="main-content">
@@ -274,7 +274,6 @@
                     elements.countdown.textContent = `00:0${seconds}`;
                 }
                 
-                // Improved fireworks function from first version
                 function createFireworks(count) {
                     const colors = [
                         '#ff0000', '#00ff00', '#0000ff', '#ffff00', 
