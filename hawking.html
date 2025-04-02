@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hawking Astronomy Club</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #007BFF;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        nav a:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to the Hawking Astronomy Club</h1>
+    <p>Explore the universe with us!</p>
+</header>
+
+<nav>
+    <a href="#login">Login</a>
+    <a href="#signup">Signup</a>
+    <a href="#membership">Membership</a>
+</nav>
+
+<section id="login">
+    <h2>Login</h2>
+    <form action="/login" method="post">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+        <input type="submit" value="Login">
+    </form>
+</section>
+
+<section id="signup">
+    <h2>Signup</h2>
+    <form action="/signup" method="post">
+        <label for="new_username">Username:</label><br>
+        <input type="text" id="new_username" name="new_username" required><br><br>
+        <label for="new_password">Password:</label><br>
+        <input type="password" id="new_password" name="new_password" required><br><br>
+        <input type="submit" value="Signup">
+    </form>
+</section>
+
+<section id="membership">
+    <h2>Membership Options</h2>
+    <p>Join us to access exclusive content and events!</p>
+    <!-- Membership details can be added here -->
+</section>
+
+<footer>
+    <p>&copy; 2025 Hawking Astronomy Club. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
