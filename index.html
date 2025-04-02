@@ -95,7 +95,9 @@
         .logo-container {
             display: flex;
             align-items: center;
-            position: relative;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
         
         .hac-logo {
@@ -105,14 +107,9 @@
             transition: transform 0.3s;
         }
         
-        .hac-logo:hover {
-            transform: scale(1.05) rotate(5deg);
-            filter: drop-shadow(0 0 10px rgba(79, 195, 247, 1));
-        }
-        
         .vtu-logo {
             height: 40px;
-            margin-left: 20px;
+            margin-right: 15px;
             filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.5));
         }
         
@@ -146,6 +143,14 @@
             color: #b3e5fc;
             font-family: 'Space Mono', monospace;
             letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            margin-left: auto;
         }
         
         .auth-buttons button {
@@ -165,40 +170,13 @@
             overflow: hidden;
         }
         
-        .auth-buttons button::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                to bottom right,
-                transparent 45%,
-                rgba(79, 195, 247, 0.3) 50%,
-                transparent 55%
-            );
-            transform: rotate(30deg);
-            transition: all 0.5s;
-        }
-        
-        .auth-buttons button:hover {
-            background: linear-gradient(135deg, #303f9f 0%, #7b1fa2 100%);
-            box-shadow: 0 0 15px rgba(79, 195, 247, 0.5);
-            transform: translateY(-2px);
-        }
-        
-        .auth-buttons button:hover::before {
-            left: 100%;
-        }
-        
         .menu-button {
             background: none;
             border: none;
             color: white;
             font-size: 1.8rem;
             cursor: pointer;
-            margin-left: 20px;
+            margin-right: 20px;
             transition: all 0.3s;
             position: relative;
             width: 40px;
@@ -218,7 +196,7 @@
         .dropdown-menu {
             display: none;
             position: absolute;
-            right: 5%;
+            left: 5%;
             top: 100%;
             background: rgba(26, 35, 126, 0.95);
             min-width: 250px;
@@ -230,194 +208,38 @@
             overflow: hidden;
         }
         
-        .dropdown-menu a {
-            color: white;
-            padding: 15px 20px;
-            text-decoration: none;
-            display: block;
-            transition: all 0.3s;
-            border-bottom: 1px solid rgba(79, 195, 247, 0.1);
-            font-family: 'Space Mono', monospace;
-            position: relative;
-        }
-        
-        .dropdown-menu a::before {
-            content: '»';
-            position: absolute;
-            left: 5px;
-            color: #4fc3f7;
-            opacity: 0;
-            transition: all 0.3s;
-        }
-        
-        .dropdown-menu a:hover {
-            background-color: rgba(79, 195, 247, 0.2);
-            padding-left: 30px;
-        }
-        
-        .dropdown-menu a:hover::before {
-            opacity: 1;
-            left: 10px;
-        }
-        
-        .dropdown-menu a:last-child {
-            border-bottom: none;
-        }
-        
-        /* Main Content */
+        /* Main Content - New Layout */
         .main-content {
-            display: flex;
             padding: 40px 5%;
-            min-height: 65vh;
-            position: relative;
-        }
-        
-        .main-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            height: 100%;
-            width: 1px;
-            background: linear-gradient(transparent, rgba(79, 195, 247, 0.5), transparent);
-        }
-        
-        .left-section {
-            flex: 1;
+            min-height: 60vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 30px;
-            position: relative;
         }
         
-        .left-section::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(79, 195, 247, 0.1) 0%, transparent 70%);
-            transform: translate(-50%, -50%);
-            z-index: -1;
-        }
-        
-        .left-section img {
-            max-width: 220px;
-            margin-bottom: 30px;
-            filter: drop-shadow(0 0 15px rgba(79, 195, 247, 0.7));
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .left-section h2 {
-            color: #4fc3f7;
-            margin-bottom: 40px;
-            font-size: 2.2rem;
+        .welcome-section {
             text-align: center;
-            text-shadow: 0 0 10px rgba(79, 195, 247, 0.5);
-            position: relative;
+            margin-bottom: 40px;
+            max-width: 800px;
         }
         
-        .left-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #4fc3f7, transparent);
+        .welcome-section h2 {
+            color: #4fc3f7;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(79, 195, 247, 0.5);
         }
         
         .action-buttons {
             display: flex;
             gap: 25px;
+            margin-bottom: 40px;
         }
         
-        .action-buttons button {
-            background: linear-gradient(135deg, rgba(26, 35, 126, 0.8) 0%, rgba(74, 20, 140, 0.8) 100%);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            font-family: 'Orbitron', sans-serif;
-            letter-spacing: 1px;
-            border: 1px solid #4fc3f7;
-            box-shadow: 0 0 15px rgba(79, 195, 247, 0.3);
-            position: relative;
-            overflow: hidden;
-            min-width: 150px;
-            text-align: center;
-        }
-        
-        .action-buttons button::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                to bottom right,
-                transparent 45%,
-                rgba(79, 195, 247, 0.4) 50%,
-                transparent 55%
-            );
-            transform: rotate(30deg);
-            transition: all 0.7s;
-        }
-        
-        .action-buttons button:hover {
-            background: linear-gradient(135deg, rgba(48, 63, 159, 0.9) 0%, rgba(123, 31, 162, 0.9) 100%);
-            box-shadow: 0 0 25px rgba(79, 195, 247, 0.6);
-            transform: translateY(-5px);
-        }
-        
-        .action-buttons button:hover::after {
-            left: 100%;
-        }
-        
-        .right-section {
-            flex: 1;
-            padding: 25px;
-            background: rgba(18, 18, 42, 0.7);
-            border-radius: 15px;
-            margin-left: 30px;
-            border: 1px solid rgba(79, 195, 247, 0.2);
-            box-shadow: 0 0 30px rgba(31, 38, 135, 0.2);
-            backdrop-filter: blur(5px);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .right-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        .apod-section {
             width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(79, 195, 247, 0.05) 0%, transparent 25%),
-                radial-gradient(circle at 80% 70%, rgba(198, 51, 255, 0.05) 0%, transparent 25%);
-            z-index: -1;
-        }
-        
-        .nasa-apod {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
+            max-width: 1000px;
+            text-align: center;
         }
         
         .apod-title {
@@ -425,53 +247,38 @@
             margin-bottom: 20px;
             font-size: 1.7rem;
             text-shadow: 0 0 5px rgba(79, 195, 247, 0.5);
-            position: relative;
-            padding-bottom: 10px;
         }
         
-        .apod-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #4fc3f7, transparent);
-        }
-        
-        .apod-image-container {
-            position: relative;
-            border-radius: 10px;
+        .apod-container {
+            display: flex;
+            background: rgba(18, 18, 42, 0.7);
+            border-radius: 15px;
             overflow: hidden;
-            margin-bottom: 20px;
+            border: 1px solid rgba(79, 195, 247, 0.2);
+            box-shadow: 0 0 30px rgba(31, 38, 135, 0.2);
+        }
+        
+        .apod-image-box {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .apod-image {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(79, 195, 247, 0.3);
         }
         
-        .apod-image {
-            width: 100%;
-            max-height: 400px;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s;
-        }
-        
-        .apod-image-container:hover .apod-image {
-            transform: scale(1.03);
-        }
-        
-        .apod-image-container::after {
-            content: 'NASA Astronomy Picture of the Day';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 8px;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-            color: white;
-            font-size: 0.8rem;
-            text-align: center;
-            font-family: 'Space Mono', monospace;
+        .apod-info-box {
+            flex: 1;
+            padding: 20px;
+            text-align: left;
         }
         
         .apod-date {
@@ -491,25 +298,8 @@
         .apod-explanation {
             color: #e0e0e0;
             line-height: 1.6;
-            overflow-y: auto;
-            max-height: 200px;
-            padding-right: 10px;
             font-family: 'Space Mono', monospace;
             font-size: 0.95rem;
-        }
-        
-        .apod-explanation::-webkit-scrollbar {
-            width: 5px;
-        }
-        
-        .apod-explanation::-webkit-scrollbar-track {
-            background: rgba(79, 195, 247, 0.1);
-            border-radius: 10px;
-        }
-        
-        .apod-explanation::-webkit-scrollbar-thumb {
-            background: #4fc3f7;
-            border-radius: 10px;
         }
         
         /* Footer Styles */
@@ -519,16 +309,6 @@
             border-top: 1px solid #1a237e;
             position: relative;
             backdrop-filter: blur(5px);
-        }
-        
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #4fc3f7, transparent);
         }
         
         .footer-content {
@@ -553,16 +333,6 @@
             display: inline-block;
         }
         
-        .footer-section h3::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #4fc3f7, transparent);
-        }
-        
         .footer-section p, .footer-section a {
             color: #b3e5fc;
             margin-bottom: 12px;
@@ -578,38 +348,6 @@
             padding-left: 5px;
         }
         
-        .footer-section a i {
-            margin-right: 8px;
-            width: 20px;
-            text-align: center;
-        }
-        
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 15px;
-        }
-        
-        .social-icons a {
-            color: #b3e5fc;
-            font-size: 1.3rem;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 1px solid rgba(79, 195, 247, 0.3);
-        }
-        
-        .social-icons a:hover {
-            color: #4fc3f7;
-            background-color: rgba(79, 195, 247, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(79, 195, 247, 0.2);
-        }
-        
         .copyright {
             text-align: center;
             padding-top: 20px;
@@ -620,33 +358,28 @@
             font-size: 0.9rem;
         }
         
-        /* Floating Astronaut Animation */
-        .floating-astronaut {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 100px;
-            height: 100px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%234fc3f7"><path d="M12 2.5c-1.5 0-3 1-3 2.5v3h6v-3c0-1.5-1.5-2.5-3-2.5zm7 6h-16v-1c0-2 3-4 8-4s8 2 8 4v1zm-8 12.5c-3 0-5-1-5-1v-7h10v7s-2 1-5 1zm-6.5-9l-1.5 1.5 3 3 1.5-1.5-3-3zm13 0l-1.5 1.5 3 3 1.5-1.5-3-3z"/></svg>');
-            background-size: contain;
-            background-repeat: no-repeat;
-            filter: drop-shadow(0 0 5px rgba(79, 195, 247, 0.7));
-            animation: float-astronaut 8s ease-in-out infinite;
+        /* Button Styles */
+        button {
+            background: linear-gradient(135deg, rgba(26, 35, 126, 0.8) 0%, rgba(74, 20, 140, 0.8) 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
             cursor: pointer;
-            z-index: 99;
-            opacity: 0.7;
+            font-size: 1.1rem;
             transition: all 0.3s;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            border: 1px solid #4fc3f7;
+            box-shadow: 0 0 15px rgba(79, 195, 247, 0.3);
+            position: relative;
+            overflow: hidden;
         }
         
-        .floating-astronaut:hover {
-            opacity: 1;
-            filter: drop-shadow(0 0 10px rgba(79, 195, 247, 1));
-        }
-        
-        @keyframes float-astronaut {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
+        button:hover {
+            background: linear-gradient(135deg, rgba(48, 63, 159, 0.9) 0%, rgba(123, 31, 162, 0.9) 100%);
+            box-shadow: 0 0 25px rgba(79, 195, 247, 0.6);
+            transform: translateY(-3px);
         }
         
         /* Responsive Design */
@@ -655,7 +388,7 @@
                 font-size: 1.8rem;
             }
             
-            .left-section h2 {
+            .welcome-section h2 {
                 font-size: 1.8rem;
             }
             
@@ -663,54 +396,41 @@
                 flex-direction: column;
                 gap: 15px;
             }
-            
-            .action-buttons button {
-                width: 100%;
-            }
         }
         
         @media (max-width: 768px) {
-            .main-content {
-                flex-direction: column;
-            }
-            
-            .main-content::before {
-                display: none;
-            }
-            
-            .right-section {
-                margin-left: 0;
-                margin-top: 30px;
-            }
-            
             header {
                 flex-wrap: wrap;
-                justify-content: center;
-                text-align: center;
+                justify-content: space-between;
             }
             
             .logo-container {
-                flex-direction: column;
-                margin-bottom: 15px;
+                position: static;
+                transform: none;
+                order: 2;
+                width: 100%;
+                justify-content: center;
+                margin: 15px 0;
             }
             
-            .hac-logo {
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
-            
-            .vtu-logo {
-                margin-left: 0;
-                margin-top: 15px;
+            .menu-button {
+                order: 1;
             }
             
             .auth-buttons {
+                order: 3;
+                margin-left: 0;
                 margin-top: 15px;
+                width: 100%;
+                justify-content: flex-end;
             }
             
-            .floating-astronaut {
-                width: 70px;
-                height: 70px;
+            .apod-container {
+                flex-direction: column;
+            }
+            
+            .apod-image-box, .apod-info-box {
+                padding: 15px;
             }
         }
         
@@ -719,7 +439,16 @@
                 font-size: 1.5rem;
             }
             
-            .left-section h2 {
+            .club-name p {
+                flex-direction: column;
+            }
+            
+            .vtu-logo {
+                margin-right: 0;
+                margin-bottom: 5px;
+            }
+            
+            .welcome-section h2 {
                 font-size: 1.5rem;
             }
             
@@ -744,40 +473,39 @@
     
     <!-- Header with Logo and Navigation -->
     <header>
+        <button class="menu-button" id="menuBtn" title="Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="#"><i class="fas fa-info-circle"></i> About the Club</a>
+            <a href="#"><i class="fas fa-users"></i> Team Members</a>
+            <a href="#"><i class="fas fa-question-circle"></i> Why Join Us?</a>
+            <a href="#"><i class="fas fa-calendar-alt"></i> Upcoming Events</a>
+            <a href="#"><i class="fas fa-images"></i> Photo Gallery</a>
+            <a href="#"><i class="fas fa-book"></i> Resources</a>
+            <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+        </div>
+        
         <div class="logo-container">
             <img src="hac-logo.png" alt="HAC Logo" class="hac-logo">
             <div class="club-name">
                 <h1>Hawking Astronomy Club</h1>
-                <p>Visvesvaraya Technological University</p>
+                <p>
+                    <img src="vtu-logo.png" alt="VTU Logo" class="vtu-logo">
+                    Visvesvaraya Technological University
+                </p>
             </div>
-            <img src="vtu-logo.png" alt="VTU Logo" class="vtu-logo">
         </div>
         
-        <div style="display: flex; align-items: center;">
-            <div class="auth-buttons">
-                <button id="signInBtn"><i class="fas fa-sign-in-alt"></i> Sign In</button>
-                <button id="signUpBtn"><i class="fas fa-user-plus"></i> Sign Up</button>
-            </div>
-            
-            <button class="menu-button" id="menuBtn" title="Menu">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="dropdown-menu" id="dropdownMenu">
-                <a href="#"><i class="fas fa-info-circle"></i> About the Club</a>
-                <a href="#"><i class="fas fa-users"></i> Team Members</a>
-                <a href="#"><i class="fas fa-question-circle"></i> Why Join Us?</a>
-                <a href="#"><i class="fas fa-calendar-alt"></i> Upcoming Events</a>
-                <a href="#"><i class="fas fa-images"></i> Photo Gallery</a>
-                <a href="#"><i class="fas fa-book"></i> Resources</a>
-                <a href="#"><i class="fas fa-envelope"></i> Contact</a>
-            </div>
+        <div class="auth-buttons">
+            <button id="signInBtn"><i class="fas fa-sign-in-alt"></i> Sign In</button>
+            <button id="signUpBtn"><i class="fas fa-user-plus"></i> Sign Up</button>
         </div>
     </header>
     
     <!-- Main Content -->
     <div class="main-content">
-        <div class="left-section">
-            <img src="hac-logo.png" alt="HAC Logo">
+        <div class="welcome-section">
             <h2>Exploring the Universe Together</h2>
             <div class="action-buttons">
                 <button id="eventsBtn"><i class="fas fa-calendar-check"></i> Events</button>
@@ -785,22 +513,21 @@
             </div>
         </div>
         
-        <div class="right-section">
-            <div class="nasa-apod" id="nasaApod">
-                <h3 class="apod-title"><i class="fas fa-star"></i> NASA Astronomy Picture of the Day</h3>
-                <div class="apod-image-container">
+        <div class="apod-section">
+            <h3 class="apod-title"><i class="fas fa-star"></i> NASA Astronomy Picture of the Day</h3>
+            <div class="apod-container">
+                <div class="apod-image-box">
                     <img src="https://apod.nasa.gov/apod/image/2401/NGC1055-SHO-Jeff-Hermann-2048.jpg" alt="NASA APOD" class="apod-image" id="apodImage">
                 </div>
-                <p class="apod-date"><i class="fas fa-clock"></i> January 15, 2024</p>
-                <p class="apod-explanation" id="apodExplanation">
-                    This image captures the majestic spiral galaxy NGC 1055 in stunning detail. Located about 60 million light-years away in the constellation Cetus, this edge-on galaxy reveals intricate dust lanes and star-forming regions. The image was created using data from the Hubble Space Telescope and showcases the galaxy's extended disk, distorted by gravitational interactions with its neighbor, the famous Messier 77 galaxy. The contrasting colors highlight different stellar populations, with blue regions indicating young, hot stars and reddish areas showing older stellar populations. This cosmic portrait spans about 100,000 light-years across, similar in size to our own Milky Way galaxy.
-                </p>
+                <div class="apod-info-box">
+                    <p class="apod-date"><i class="fas fa-clock"></i> January 15, 2024</p>
+                    <p class="apod-explanation" id="apodExplanation">
+                        This image captures the majestic spiral galaxy NGC 1055 in stunning detail. Located about 60 million light-years away in the constellation Cetus, this edge-on galaxy reveals intricate dust lanes and star-forming regions. The image was created using data from the Hubble Space Telescope and showcases the galaxy's extended disk, distorted by gravitational interactions with its neighbor, the famous Messier 77 galaxy. The contrasting colors highlight different stellar populations, with blue regions indicating young, hot stars and reddish areas showing older stellar populations. This cosmic portrait spans about 100,000 light-years across, similar in size to our own Milky Way galaxy.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-    
-    <!-- Floating Astronaut -->
-    <div class="floating-astronaut" id="astronautBtn" title="Quick Contact"></div>
     
     <!-- Footer -->
     <footer>
@@ -808,12 +535,6 @@
             <div class="footer-section">
                 <h3>About HAC</h3>
                 <p>The Hawking Astronomy Club at VTU is dedicated to exploring the wonders of the universe through observation, education, and research.</p>
-                <div class="social-icons">
-                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
             </div>
             
             <div class="footer-section">
@@ -822,7 +543,6 @@
                 <a href="#"><i class="fas fa-chevron-right"></i> Photo Gallery</a>
                 <a href="#"><i class="fas fa-chevron-right"></i> Resources</a>
                 <a href="#"><i class="fas fa-chevron-right"></i> Join the Club</a>
-                <a href="#"><i class="fas fa-chevron-right"></i> Member Portal</a>
             </div>
             
             <div class="footer-section">
@@ -835,7 +555,7 @@
         </div>
         
         <div class="copyright">
-            <p>&copy; 2024 Hawking Astronomy Club, VTU. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: #ff4d4d;"></i> by HAC Web Team</p>
+            <p>&copy; 2024 Hawking Astronomy Club, VTU. All Rights Reserved.</p>
         </div>
     </footer>
     
@@ -899,10 +619,6 @@
         
         document.getElementById('galleryBtn').addEventListener('click', function() {
             alert('Gallery page will be shown here!');
-        });
-        
-        document.getElementById('astronautBtn').addEventListener('click', function() {
-            alert('Quick contact form will appear here!');
         });
         
         // Pause announcement on hover
