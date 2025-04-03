@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Hawking Astronomy Club</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth-compat.js"></script>
+    <style>
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --error: #dc3545;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--dark), #16213e);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--light);
+            padding: 20px;
+        }
+        
+        .auth-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+        }
+        
+        .auth-footer {
+            text-align: center;
+            margin-top: 25px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        .auth-footer a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .error-message {
+            color: var(--error);
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        @media (max-width: 576px) {
+            .auth-container {
+                padding: 30px 20px;
+            }
+            
+            .logo h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="logo">
+            <h1>Hawking Astronomy Club</h1>
+            <p>Join our cosmic community</p>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" placeholder="your@email.com" required>
+            <div class="error-message" id="email-error"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-control" placeholder="••••••••" required>
+            <div class="error-message" id="password-error"></div>
+        </div>
+        
+        <button class="btn btn-primary" onclick="signUp()">Create Account</button>
+        
+        <div class="auth-footer">
+            Already have an account? <a href="login.html">Sign in here</a>
+        </div>
+    </div>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBn2e4_TbwbTjVgc7PvOfv2qFFYXsLsoyM",
+            authDomain: "hawking-astronomy-club.firebaseapp.com",
+            projectId: "hawking-astronomy-club",
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        function signUp() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            document.getElementById('email-error').style.display = 'none';
+            document.getElementById('password-error').style.display = 'none';
+
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    userCredential.user.sendEmailVerification();
+                    alert("Account created! Please check your email for verification.");
+                    window.location.href = "login.html";
+                })
+                .catch((error) => {
+                    if (error.code === 'auth/email-already-in-use') {
+                        document.getElementById('email-error').textContent = 'Email already in use';
+                        document.getElementById('email-error').style.display = 'block';
+                    } else if (error.code === 'auth/weak-password') {
+                        document.getElementById('password-error').textContent = 'Password should be at least 6 characters';
+                        document.getElementById('password-error').style.display = 'block';
+                    } else {
+                        alert("Error: " + error.message);
+                    }
+                });
+        }
+    </script>
+</body>
+</html>
