@@ -5,9 +5,664 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hawking Astronomy Club - VTU</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        /* CSS will be placed here */
+        :root {
+            --primary: #4a6bff;
+            --secondary: #6c5ce7;
+            --dark: #0f1322;
+            --darker: #0a0a1a;
+            --light: #f8f9fa;
+            --lighter: #ffffff;
+            --text-dark: #2d3436;
+            --text-light: #f8f9fa;
+            --accent: #00cec9;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--darker);
+            color: var(--text-light);
+            transition: var(--transition);
+            overflow-x: hidden;
+            background-image: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=1000');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 26, 0.85);
+            z-index: -1;
+        }
+
+        body.light-mode {
+            background-color: var(--light);
+            color: var(--text-dark);
+        }
+
+        body.light-mode::before {
+            background: rgba(248, 249, 250, 0.85);
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Scrolling Announcement */
+        .announcement-bar {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 12px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            box-shadow: var(--shadow);
+        }
+
+        .announcement-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: scroll 25s linear infinite;
+            font-weight: 500;
+        }
+
+        .announcement-content i {
+            margin: 0 10px;
+            color: white;
+        }
+
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-100%); }
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: rgba(15, 19, 34, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode header {
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .hac-logo {
+            height: 70px;
+            margin-right: 15px;
+            filter: drop-shadow(0 0 10px rgba(74, 107, 255, 0.5));
+            transition: var(--transition);
+        }
+
+        .vtu-logo {
+            height: 35px;
+            margin-right: 15px;
+            transition: var(--transition);
+        }
+
+        .club-name {
+            text-align: center;
+        }
+
+        .club-name h1 {
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        body.light-mode .club-name h1 {
+            color: var(--text-dark);
+        }
+
+        .club-name p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-family: 'Space Mono', monospace;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        body.light-mode .club-name p {
+            color: rgba(45, 52, 54, 0.8);
+        }
+
+        /* Navigation */
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            margin-left: auto;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: var(--transition);
+        }
+
+        body.light-mode .nav-links a {
+            color: var(--text-dark);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+            margin-left: 40px;
+        }
+
+        .auth-button {
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #signInBtn {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        body.light-mode #signInBtn {
+            color: var(--text-dark);
+            border: 2px solid rgba(45, 52, 54, 0.2);
+        }
+
+        #signUpBtn {
+            background: var(--accent);
+            color: var(--dark);
+            border: 2px solid var(--accent);
+        }
+
+        #signInBtn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        #signUpBtn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 206, 201, 0.3);
+        }
+
+        /* Mobile Menu */
+        .menu-button {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 101;
+        }
+
+        body.light-mode .menu-button {
+            color: var(--text-dark);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 80px 5%;
+            min-height: 60vh;
+        }
+
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 80px;
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+
+        .welcome-section h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .welcome-section p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.3s forwards;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.6s forwards;
+        }
+
+        .action-btn {
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #eventsBtn {
+            background: var(--primary);
+            color: white;
+        }
+
+        #galleryBtn {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        body.light-mode #galleryBtn {
+            color: var(--text-dark);
+            border: 2px solid rgba(45, 52, 54, 0.2);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* APOD Section */
+        .apod-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.9s forwards;
+        }
+
+        .apod-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        body.light-mode .apod-title {
+            color: var(--text-dark);
+        }
+
+        .apod-container {
+            display: flex;
+            background: rgba(15, 19, 34, 0.7);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        body.light-mode .apod-container {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .apod-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .apod-image-box {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .apod-image {
+            max-width: 100%;
+            max-height: 500px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        .apod-image:hover {
+            transform: scale(1.02);
+        }
+
+        .apod-info-box {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .apod-date {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        body.light-mode .apod-date {
+            color: rgba(45, 52, 54, 0.8);
+        }
+
+        .apod-explanation {
+            line-height: 1.8;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        body.light-mode .apod-explanation {
+            color: rgba(45, 52, 54, 0.9);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 19, 34, 0.9);
+            padding: 60px 5% 30px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        body.light-mode footer {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: white;
+            position: relative;
+            display: inline-block;
+        }
+
+        body.light-mode .footer-section h3 {
+            color: var(--text-dark);
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .footer-section p, .footer-section a {
+            margin-bottom: 15px;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        body.light-mode .footer-section p,
+        body.light-mode .footer-section a {
+            color: rgba(45, 52, 54, 0.7);
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .footer-section i {
+            margin-right: 10px;
+            width: 20px;
+            color: var(--accent);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        body.light-mode .copyright {
+            border-top: 1px solid rgba(45, 52, 54, 0.1);
+            color: rgba(45, 52, 54, 0.6);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Particle Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        body.light-mode .particle {
+            background: var(--text-dark);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .nav-links {
+                display: none;
+            }
+
+            .menu-button {
+                display: block;
+            }
+
+            .logo-container {
+                position: static;
+                transform: none;
+                margin-right: auto;
+            }
+
+            .auth-buttons {
+                margin-left: auto;
+            }
+
+            .welcome-section h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-wrap: wrap;
+            }
+
+            .logo-container {
+                order: 1;
+                width: 100%;
+                justify-content: center;
+                margin-bottom: 15px;
+            }
+
+            .menu-button {
+                order: 2;
+            }
+
+            .auth-buttons {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                margin-top: 15px;
+            }
+
+            .apod-container {
+                flex-direction: column;
+            }
+
+            .welcome-section h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .club-name h1 {
+                font-size: 1.5rem;
+            }
+
+            .club-name p {
+                flex-direction: column;
+            }
+
+            .vtu-logo {
+                margin-bottom: 5px;
+            }
+
+            .welcome-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .action-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Particle Background -->
+    <div class="particles" id="particles"></div>
+    
     <!-- Scrolling Announcement -->
     <div class="announcement-bar">
         <div class="announcement-content">
@@ -15,20 +670,11 @@
         </div>
     </div>
     
-    <!-- Header with Logo and Navigation -->
+    <!-- Header -->
     <header>
         <button class="menu-button" id="menuBtn" title="Menu">
             <i class="fas fa-bars"></i>
         </button>
-        <div class="dropdown-menu" id="dropdownMenu">
-            <a href="#"><i class="fas fa-info-circle"></i> About the Club</a>
-            <a href="#"><i class="fas fa-users"></i> Team Members</a>
-            <a href="#"><i class="fas fa-question-circle"></i> Why Join Us?</a>
-            <a href="#"><i class="fas fa-calendar-alt"></i> Upcoming Events</a>
-            <a href="#"><i class="fas fa-images"></i> Photo Gallery</a>
-            <a href="#"><i class="fas fa-book"></i> Resources</a>
-            <a href="#"><i class="fas fa-envelope"></i> Contact</a>
-        </div>
         
         <div class="logo-container">
             <img src="HAWKING ASTRONOMY CLUB.png" alt="HAC Logo" class="hac-logo">
@@ -41,6 +687,15 @@
             </div>
         </div>
         
+        <nav class="nav-links">
+            <a href="#">About</a>
+            <a href="#">Events</a>
+            <a href="#">Gallery</a>
+            <a href="#">Resources</a>
+            <a href="#">Team</a>
+            <a href="#">Contact</a>
+        </nav>
+        
         <div class="auth-buttons">
             <a href="login.html" class="auth-button" id="signInBtn"><i class="fas fa-sign-in-alt"></i> Sign In</a>
             <a href="signup.html" class="auth-button" id="signUpBtn"><i class="fas fa-user-plus"></i> Sign Up</a>
@@ -49,28 +704,29 @@
     
     <!-- Main Content -->
     <div class="main-content">
-        <div class="welcome-section">
+        <section class="welcome-section animate__animated animate__fadeIn">
             <h2>Exploring the Universe Together</h2>
+            <p>Join us on an extraordinary journey through the cosmos as we explore the wonders of astronomy, host star-gazing events, and bring the universe closer to you.</p>
             <div class="action-buttons">
-                <button id="eventsBtn"><i class="fas fa-calendar-check"></i> Events</button>
-                <button id="galleryBtn"><i class="fas fa-images"></i> Gallery</button>
+                <button class="action-btn" id="eventsBtn"><i class="fas fa-calendar-check"></i> Upcoming Events</button>
+                <button class="action-btn" id="galleryBtn"><i class="fas fa-images"></i> Photo Gallery</button>
             </div>
-        </div>
+        </section>
         
-        <div class="apod-section">
+        <section class="apod-section">
             <h3 class="apod-title"><i class="fas fa-star"></i> NASA Astronomy Picture of the Day</h3>
             <div class="apod-container">
                 <div class="apod-image-box">
-                    <img src="https://apod.nasa.gov/apod/image/2401/NGC1055-SHO-Jeff-Hermann-2048.jpg" alt="NASA APOD" class="apod-image" id="apodImage">
+                    <img src="https://apod.nasa.gov/apod/image/2401/NGC1055-SHO-Jeff-Hermann-2048.jpg" alt="NASA APOD" class="apod-image">
                 </div>
                 <div class="apod-info-box">
                     <p class="apod-date"><i class="fas fa-clock"></i> January 15, 2024</p>
-                    <p class="apod-explanation" id="apodExplanation">
+                    <p class="apod-explanation">
                         This image captures the majestic spiral galaxy NGC 1055 in stunning detail. Located about 60 million light-years away in the constellation Cetus, this edge-on galaxy reveals intricate dust lanes and star-forming regions. The image was created using data from the Hubble Space Telescope and showcases the galaxy's extended disk, distorted by gravitational interactions with its neighbor, the famous Messier 77 galaxy. The contrasting colors highlight different stellar populations, with blue regions indicating young, hot stars and reddish areas showing older stellar populations. This cosmic portrait spans about 100,000 light-years across, similar in size to our own Milky Way galaxy.
                     </p>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
     
     <!-- Footer -->
@@ -103,6 +759,96 @@
         </div>
     </footer>
     
-    <script src="script.js"></script>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+    
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        // Check for saved theme preference
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            body.classList.add(currentTheme);
+            updateThemeIcon();
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            localStorage.setItem('theme', body.classList.contains('light-mode') ? 'light-mode' : '');
+            updateThemeIcon();
+        });
+        
+        function updateThemeIcon() {
+            if (body.classList.contains('light-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+        
+        // Create particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 100; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            // Random properties
+            const size = Math.random() * 3 + 1;
+            const posX = Math.random() * 100;
+            const posY = Math.random() * 100;
+            const opacity = Math.random() * 0.5 + 0.1;
+            const delay = Math.random() * 5;
+            const duration = Math.random() * 3 + 3;
+            
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${posX}%`;
+            particle.style.top = `${posY}%`;
+            particle.style.opacity = opacity;
+            particle.style.animationDelay = `${delay}s`;
+            particle.style.animationDuration = `${duration}s`;
+            
+            particlesContainer.appendChild(particle);
+        }
+        
+        // Mobile menu toggle
+        const menuButton = document.getElementById('menuBtn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuButton.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Animate elements when they come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.apod-section, .welcome-section p, .action-buttons');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.animation = 'fadeInUp 1s ease-out forwards';
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Run once on load
+    </script>
 </body>
 </html>
