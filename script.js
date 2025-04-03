@@ -86,11 +86,13 @@ window.addEventListener('load', fetchAPOD);
 
 // Button event listeners
 document.getElementById('signInBtn').addEventListener('click', function() {
-    alert('Sign In functionality will be implemented soon!');
+    
+    // or other message-displaying code
 });
 
 document.getElementById('signUpBtn').addEventListener('click', function() {
-    alert('Sign Up functionality will be implemented soon!');
+    
+    // or other message-displaying code
 });
 
 document.getElementById('eventsBtn').addEventListener('click', function() {
