@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In / Sign Up - Hawking Astronomy Club</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="signup_login.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-header">
+            <img src="HAWKING ASTRONOMY CLUB.png" alt="HAC Logo" class="auth-logo">
+            <h1>Hawking Astronomy Club</h1>
+        </div>
+        
+        <div class="auth-card" id="authCard">
+            <h2 id="authMessage">Welcome back, stargazer!</h2>
+            
+            <div class="auth-form">
+                <div class="form-group">
+                    <label for="auth-email"><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" id="auth-email" placeholder="your@email.com">
+                    <p class="error-message" id="emailError"></p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="auth-password"><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="auth-password" placeholder="••••••••">
+                    <p class="error-message" id="passwordError"></p>
+                </div>
+                
+                <button id="auth-action-btn">Sign In</button>
+                
+                <div class="auth-footer" id="authFooter">
+                    Don't have an account? <a href="#" id="toggle-auth">Sign up here</a><br>
+                    <a href="#" id="reset-password">Forgot password?</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="auth-back">
+            <a href="home.html"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth-compat.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="signup_login.js"></script>
+</body>
+</html>

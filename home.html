@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hawking Astronomy Club - VTU</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <!-- Scrolling Announcement -->
+    <div class="announcement-bar">
+        <div class="announcement-content">
+            <i class="fas fa-telescope"></i> Next Club Meeting: Friday at 4 PM in Science Block Room 203 | <i class="fas fa-moon"></i> Telescope Observation Night: Saturday at 7 PM | <i class="fas fa-camera"></i> Astro-Photography Workshop: Next Week! | <i class="fas fa-star"></i> Special Guest Lecture: Dr. Sharma on Exoplanets - Jan 25th
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <!-- Left Side - Mobile Menu Button -->
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        
+        <!-- Center - Logo and Club Name -->
+        <div class="logo-container">
+            <img src="HAWKING ASTRONOMY CLUB.png" alt="HAC Logo" class="hac-logo">
+            <div class="club-name">
+                <h1>Hawking Astronomy Club</h1>
+                <p>
+                    <img src="vtu.png" alt="VTU Logo" class="vtu-logo">
+                    Visvesvaraya Technological University
+                </p>
+            </div>
+        </div>
+        
+        <!-- Right Side - Auth Buttons/User Profile -->
+        <div class="user-auth-section" id="userAuthSection">
+            <div class="auth-buttons">
+                <a href="signup_login.html?mode=login"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+                <a href="signup_login.html?mode=signup"><i class="fas fa-user-plus"></i> Sign Up</a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#about">About the Club</a>
+        <a href="#team">Team Members</a>
+        <a href="#why-join">Why Join Us?</a>
+        <a href="#events">Upcoming Events</a>
+        <a href="#resources">Resources</a>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="#events" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="#resources" class="nav-link">Resources</a></li>
+            <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="welcome-section">
+            <h2>Exploring the Universe Together</h2>
+            
+            <div class="cosmic-quote">
+                <p>"Remember to look up at the stars and not down at your feet. Try to make sense of what you see and wonder about what makes the universe exist. Be curious."</p>
+                <div class="author">- Stephen Hawking</div>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="eventsBtn"><i class="fas fa-calendar-check"></i> Events</button>
+                <button id="galleryBtn"><i class="fas fa-images"></i> Gallery</button>
+            </div>
+        </div>
+        
+        <div class="apod-section">
+            <h3 class="apod-title"><i class="fas fa-star"></i> NASA Astronomy Picture of the Day</h3>
+            <div class="apod-container">
+                <div class="apod-image-box">
+                    <img src="https://apod.nasa.gov/apod/image/2401/NGC1055-SHO-Jeff-Hermann-2048.jpg" alt="NASA APOD" class="apod-image" id="apodImage">
+                </div>
+                <div class="apod-info-box">
+                    <p class="apod-date"><i class="fas fa-clock"></i> January 15, 2024</p>
+                    <p class="apod-explanation" id="apodExplanation">
+                        This image captures the majestic spiral galaxy NGC 1055 in stunning detail. Located about 60 million light-years away in the constellation Cetus, this edge-on galaxy reveals intricate dust lanes and star-forming regions. The image was created using data from the Hubble Space Telescope and showcases the galaxy's extended disk, distorted by gravitational interactions with its neighbor, the famous Messier 77 galaxy.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <h2 class="section-title">About Our Club</h2>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Founded in 2010, the Hawking Astronomy Club is dedicated to fostering a love for astronomy and space science among people of all ages. We believe that understanding our universe is not just for professional scientists but for everyone who looks up at the night sky with wonder.</p>
+                    
+                    <p>Our club organizes regular stargazing events, lectures by renowned astronomers, workshops on astrophotography, and community outreach programs to share the beauty of the cosmos.</p>
+                    
+                    <p>Whether you're an experienced astronomer or just starting your journey into space exploration, you'll find a welcoming community of like-minded enthusiasts at our club.</p>
+                    
+                    <a href="#join" class="btn">Become a Member</a>
+                </div>
+                
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Club members observing the night sky">
+                </div>
+            </div>
+        </section>
+        
+        <!-- Events Section -->
+        <section id="events" class="events-section">
+            <h2 class="section-title">Upcoming Events</h2>
+            
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="event-details">
+                        <h3 class="event-title">Monthly Star Party</h3>
+                        <p class="event-date">June 15, 2023 | 8:00 PM</p>
+                        <p class="event-description">Join us for our monthly gathering under the stars. Bring your telescopes or use ours. Perfect for beginners and experts alike.</p>
+                        <a href="#register" class="btn btn-outline">Register Now</a>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="event-details">
+                        <h3 class="event-title">Astrophotography Workshop</h3>
+                        <p class="event-date">June 22, 2023 | 6:30 PM</p>
+                        <p class="event-description">Learn how to capture stunning images of the night sky with your DSLR camera. No prior experience required.</p>
+                        <a href="#register" class="btn btn-outline">Register Now</a>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1454789548928-9efd52dc4031?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="event-details">
+                        <h3 class="event-title">Lecture: Black Holes Explained</h3>
+                        <p class="event-date">July 5, 2023 | 7:00 PM</p>
+                        <p class="event-description">Dr. Sarah Johnson from the local university will explain the mysteries of black holes in an accessible way.</p>
+                        <a href="#register" class="btn btn-outline">Register Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About HAC</h3>
+                <p>The Hawking Astronomy Club at VTU is dedicated to exploring the wonders of the universe through observation, education, and community engagement.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#about"><i class="fas fa-chevron-right"></i> About Us</a>
+                <a href="#events"><i class="fas fa-chevron-right"></i> Upcoming Events</a>
+                <a href="#resources"><i class="fas fa-chevron-right"></i> Resources</a>
+                <a href="#join"><i class="fas fa-chevron-right"></i> Join the Club</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <a href="mailto:hac@vtu.edu.in"><i class="fas fa-envelope"></i> hac@vtu.edu.in</a>
+                <a href="tel:+919876543210"><i class="fas fa-phone"></i> +91 9876543210</a>
+                <p><i class="fas fa-map-marker-alt"></i> Science Block, Room 205</p>
+                <p><i class="fas fa-university"></i> Visvesvaraya Technological University</p>
+            </div>
+        </div>
+        
+        <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024 Hawking Astronomy Club, VTU. All Rights Reserved.</p>
+            <p>Image credits: NASA, Unsplash</p>
+        </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth-compat.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="home.js"></script>
+</body>
+</html>
